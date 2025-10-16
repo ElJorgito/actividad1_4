@@ -10,5 +10,6 @@ import java.io.Serializable;
 public class FamiliaProfesional implements Serializable {
         private String codigo;
         private String nombre;
+        //jlksnjlksdfsdf
 }
 
