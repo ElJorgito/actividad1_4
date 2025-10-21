@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 
-public class Grado {
+public class Grado implements Serializable {
     private int cod;
     private String nombre;
     private String categoria;
