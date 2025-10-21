@@ -1,6 +1,10 @@
 package es.cifpcarlos3.actividad1_4;
 
+import es.cifpcarlos3.actividad1_4.vo.Ciclo;
 import es.cifpcarlos3.actividad1_4.vo.FamiliaProfesional;
+import es.cifpcarlos3.actividad1_4.vo.Grado;
+
+import java.util.List;
 
 public class GestorFormacion2 {
     public static void main(String[] args) {
@@ -16,6 +20,18 @@ public class GestorFormacion2 {
         if (familia == null) {
             System.out.println("Familia no encontrada");
             return;
+        }
+
+        System.out.println("Familia profesional: " + familia.getNombre());
+        System.out.println("Grado seleccionado: ");
+
+        List<Ciclo> ciclos = cargarCiclosPorFamilia(codigoFamilia);
+
+        System.out.println("Ciclos encontrados: ");
+        if (ciclos.isEmpty()) {
+            System.out.println("No hay ciclos asociados a esta familia.");
+        } else {
+            ciclos.forEach(System.out::println);
         }
     }
     private static FamiliaProfesional cargarFamilia(String codigo_familia) {
