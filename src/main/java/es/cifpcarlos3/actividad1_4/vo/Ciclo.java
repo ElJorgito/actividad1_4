@@ -6,6 +6,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 
+
 public class Ciclo implements Serializable {
     private int cod;
     private String descripcion;
