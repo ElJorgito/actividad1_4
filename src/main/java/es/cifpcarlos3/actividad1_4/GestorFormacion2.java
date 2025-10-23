@@ -88,7 +88,6 @@ public class GestorFormacion2 {
             String linea;
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-
             }
         } catch (Exception e) {
             System.err.println("Error al cargar el ciclo: " + e.getMessage());
