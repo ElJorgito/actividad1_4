@@ -69,9 +69,9 @@ public class GestorFormacion2 {
                 if (partes.length == 3) {
                     String cod = partes[0].trim().toUpperCase();
                     String nombre = partes[1].trim();
-                    String descripcion = partes[2].trim();
+                    String categoria = partes[2].trim();
                     if (cod.equals(codigo_grado)) {
-                        return new Grado(cod, nombre, descripcion);
+                        return new Grado(cod, nombre, categoria);
                     }
                 }
             }
