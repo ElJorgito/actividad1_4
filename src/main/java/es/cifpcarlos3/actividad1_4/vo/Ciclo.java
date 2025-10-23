@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 
 public class Ciclo implements Serializable {
-    private int cod;
+    private String cod;
     private String descripcion;
     private int numHoras;
 }
