@@ -15,5 +15,5 @@ public class Ciclo implements Serializable {
     private String cod_grado;
 
     @Override
-    public String toString() {return cod + descripcion + numHoras + cod_familia + cod_grado ;}
+    public String toString() {return "El ciclo " + descripcion + " incluido en la familia " + cod_familia + " es un " + cod_grado;}
 }
