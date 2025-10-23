@@ -39,12 +39,23 @@ public class GestorFormacion2 {
         // Serialización
         serializarLista(ciclos);
     }
-    private static FamiliaProfesional cargarFamilia(String codigo_familia) {
-        String ruta = "src/main/java/es/cifpcarlos3/actividad1_4/familia_profesional.dat";
-        try (FileInputStream fis = new FileInputStream(ruta)) {
 
+    public static FamiliaProfesional cargarFamilia(String codigo_familia) {
+        String ruta = "src/main/java/es/cifpcarlos3/actividad1_4/familia_profesional.dat";
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split("=");
+                if (partes.length == 2) {
+                    String codigo = partes[0].trim().toUpperCase();
+                    String nombre = partes[1].trim();
+                    if (codigo.equals(codigo_familia)) {
+                        return new FamiliaProfesional(codigo, nombre);
+                    }
+                }
+            }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error al leer el familia " + e.getMessage());
         }
         return null;
     }
