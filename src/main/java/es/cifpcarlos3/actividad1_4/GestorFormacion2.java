@@ -28,9 +28,8 @@ public class GestorFormacion2 {
 
         System.out.println("Familia profesional: " + familia.getNombre() + " (" + familia.getCodigo() + ")");
         System.out.println("Grado seleccionado: " + grado.getNombre());
-        System.out.println("\nCiclos encontrados:\n");
-
         System.out.println("Ciclos encontrados: ");
+
         if (ciclos.isEmpty()) {
             System.out.println("No hay ciclos asociados a esta familia.");
         } else {
@@ -64,5 +63,16 @@ public class GestorFormacion2 {
             System.err.println("Error al cargar el ciclo: " + e.getMessage());
         }
         return null;
+    }
+
+    public static void serializarLista(List<Ciclo> ciclos) {
+        try (ObjectOutputStream oos = new ObjectOutputStream
+                (new FileOutputStream("src/main/java/es/cifpcarlos3/actividad1_4/lista_ciclos.ser")))
+        {
+            oos.writeObject(ciclos);
+            System.out.println("Lista serializada correctamente en lista_ciclos.ser");
+        } catch (IOException e) {
+            System.out.println("Error al serializar la lista: " + e.getMessage());
+        }
     }
 }
