@@ -18,16 +18,17 @@ public class GestorFormacion2 {
         String codigo_grado = args[1].trim().toUpperCase();
 
         FamiliaProfesional familia = cargarFamilia(codigo_familia);
+        Grado grado = cargarGrado(codigo_grado);
+        List<Ciclo> ciclos = cargarCiclo(codigo_familia, codigo_grado);
 
-        if (familia == null) {
-            System.out.println("Familia no encontrada");
+        if (familia == null || grado == null) {
+            System.out.println("No se encontró la familia o el grado especificado.");
             return;
         }
 
-        System.out.println("Familia profesional: " + familia.getNombre());
-        System.out.println("Grado seleccionado: ");
-
-        List<Ciclo> ciclos = cargarCiclo(codigo_familia, codigo_grado);
+        System.out.println("Familia profesional: " + familia.getNombre() + " (" + familia.getCodigo() + ")");
+        System.out.println("Grado seleccionado: " + grado.getNombre());
+        System.out.println("\nCiclos encontrados:\n");
 
         System.out.println("Ciclos encontrados: ");
         if (ciclos.isEmpty()) {
@@ -35,6 +36,9 @@ public class GestorFormacion2 {
         } else {
             ciclos.forEach(System.out::println);
         }
+
+        // Serialización
+        serializarLista(ciclos);
     }
     private static FamiliaProfesional cargarFamilia(String codigo_familia) {
         String ruta = "src/main/java/es/cifpcarlos3/actividad1_4/familia_profesional.dat";
