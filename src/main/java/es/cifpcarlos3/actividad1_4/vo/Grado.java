@@ -7,7 +7,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 
 public class Grado implements Serializable {
-    private int cod;
+    private String cod;
     private String nombre;
     private String categoria;
 }
