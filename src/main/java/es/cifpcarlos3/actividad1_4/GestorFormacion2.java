@@ -62,6 +62,22 @@ public class GestorFormacion2 {
 
     public static Grado cargarGrado(String codigo_grado) {
         String ruta = "src/main/java/es/cifpcarlos3/actividad1_4/grados.csv";
+        try(BufferedReader br = new BufferedReader(new FileReader(ruta))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split("#");
+                if (partes.length == 3) {
+                    String cod = partes[0].trim().toUpperCase();
+                    String nombre = partes[1].trim();
+                    String descripcion = partes[2].trim();
+                    if (cod.equals(codigo_grado)) {
+                        return new Grado(cod, nombre, descripcion);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error al leer el grado " + e.getMessage());
+        }
         return null;
     }
 
