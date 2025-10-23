@@ -83,7 +83,7 @@ public class GestorFormacion2 {
 
     public static List<Ciclo> cargarCiclo(String codigo_familia, String codigo_grado) {
         List<Ciclo> ciclos = new ArrayList<>();
-        String ruta = "src/main/java/es/cifpcarlos3/actividad1_3/informacion_ciclos.txt";
+        String ruta = "src/main/java/es/cifpcarlos3/actividad1_4/informacion_ciclos.txt";
         try (BufferedReader  br = new BufferedReader(new FileReader(ruta))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -115,7 +115,7 @@ public class GestorFormacion2 {
                 (new FileOutputStream("src/main/java/es/cifpcarlos3/actividad1_4/lista_ciclos.ser")))
         {
             oos.writeObject(ciclos);
-            System.out.println("Lista serializada correctamente en lista_ciclos.ser");
+            System.out.println("\nLista serializada correctamente en lista_ciclos.ser");
         } catch (IOException e) {
             System.out.println("Error al serializar la lista: " + e.getMessage());
         }
