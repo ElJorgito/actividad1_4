@@ -84,8 +84,12 @@ public class GestorFormacion2 {
     public static Ciclo cargarCiclo(String codigo_familia, String codigo_grado) {
         List<Ciclo> ciclos = new ArrayList<>();
         String ruta = "src/main/java/es/cifpcarlos3/actividad1_3/informacion_ciclos.txt";
-        try () {
+        try (BufferedReader  br = new BufferedReader(new FileReader(ruta))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                linea = linea.trim();
 
+            }
         } catch (Exception e) {
             System.err.println("Error al cargar el ciclo: " + e.getMessage());
         }
