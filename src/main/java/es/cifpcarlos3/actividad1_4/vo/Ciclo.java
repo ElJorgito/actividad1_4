@@ -11,4 +11,6 @@ public class Ciclo implements Serializable {
     private String cod;
     private String descripcion;
     private int numHoras;
+    private String cod_familia;
+    private String cod_grado;
 }

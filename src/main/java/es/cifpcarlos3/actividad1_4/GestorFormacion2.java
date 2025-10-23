@@ -81,7 +81,7 @@ public class GestorFormacion2 {
         return null;
     }
 
-    public static Ciclo cargarCiclo(String codigo_familia, String codigo_grado) {
+    public static List<Ciclo> cargarCiclo(String codigo_familia, String codigo_grado) {
         List<Ciclo> ciclos = new ArrayList<>();
         String ruta = "src/main/java/es/cifpcarlos3/actividad1_3/informacion_ciclos.txt";
         try (BufferedReader  br = new BufferedReader(new FileReader(ruta))) {
@@ -89,12 +89,25 @@ public class GestorFormacion2 {
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
                 if(linea.isEmpty())continue;
+                linea = linea.replace("'", "");
 
+                String[] partes = linea.split(",");
+
+                if (partes.length == 5) {
+                    String cod = partes[0].trim().toUpperCase();
+                    String descripcion = partes[1].trim();
+                    int numHoras = Integer.parseInt(partes[2].trim());
+                    String cod_familia = partes[3].trim();
+                    String cod_grado = partes[4].trim();
+                    if (cod_familia.equals(codigo_familia) && cod_grado.equals(codigo_grado)) {
+                        ciclos.add(new Ciclo(cod, descripcion, numHoras, cod_familia, cod_grado));
+                    }
+                }
             }
         } catch (Exception e) {
             System.err.println("Error al cargar el ciclo: " + e.getMessage());
         }
-        return null;
+        return ciclos;
     }
 
     public static void serializarLista(List<Ciclo> ciclos) {
